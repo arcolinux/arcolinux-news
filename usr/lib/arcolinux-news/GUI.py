@@ -1,4 +1,7 @@
 
+def takeSecond(elem):
+    return elem[1]
+
 
 def GUI(self, Gtk, fn):
     items = fn.fetch_news()
@@ -13,9 +16,15 @@ def GUI(self, Gtk, fn):
     vbox = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
     sw.add(vbox)
     self.add(sw)
-    items.sort(reverse=True)
-    for file in items:
-        with open(fn.working_dir + file, "r") as f:
+
+    nlist = []
+    for l in items:
+        nlist.append([l, fn.os.path.getmtime(fn.working_dir + l)])    
+
+    nlist.sort(reverse=True, key=takeSecond)
+
+    for file in nlist:
+        with open(fn.working_dir + file[0], "r") as f:
             lines = f.read()
             f.close()
         lb = Gtk.ListBox()
@@ -27,7 +36,7 @@ def GUI(self, Gtk, fn):
         hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         lbl = Gtk.Label(xalign=0)
         lbl.set_line_wrap(True)
-        lbl.set_markup("<span size=\"20000\"><b>" + file.replace(".news", "") + "</b></span>")
+        lbl.set_markup("<span size=\"20000\"><b>" + file[0].replace(".news", "") + "</b></span>")
         lbl2 = Gtk.Label(xalign=0)
         lbl2.set_line_wrap(True)
         lbl2.set_markup(lines)
@@ -36,5 +45,3 @@ def GUI(self, Gtk, fn):
         hbox1.pack_start(vbox1, False, False, 10)
         lbr.add(hbox1)
         vbox.pack_start(lb, False, False, 10)
-
-        
