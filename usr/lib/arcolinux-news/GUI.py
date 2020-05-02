@@ -4,11 +4,13 @@
 
 
 def takeSecond(elem):
-    return elem[1]
+    return elem
+import numpy as np
 
 
 def GUI(self, Gtk, fn):
     items = fn.fetch_news()
+    notice = fn.fetch_notice()
 
     self.HeaderBar = Gtk.HeaderBar()
     self.HeaderBar.set_show_close_button(True)
@@ -21,14 +23,13 @@ def GUI(self, Gtk, fn):
     sw.add(vbox)
     self.add(sw)
 
-    nlist = []
-    for l in items:
-        nlist.append([l, fn.os.path.getmtime(fn.working_dir + l)])
+    items.sort(reverse=True)
+    notice.sort(reverse=True)
 
-    nlist.sort(reverse=True, key=takeSecond)
-
-    for file in nlist:
-        with open(fn.working_dir + file[0], "r") as f:
+    lists = np.append(notice, items)
+    # print(lists)
+    for file in lists:
+        with open(fn.working_dir + file, "r") as f:
             lines = f.read()
             f.close()
         lb = Gtk.ListBox()
@@ -41,7 +42,7 @@ def GUI(self, Gtk, fn):
         lbl = Gtk.Label(xalign=0)
         lbl.set_line_wrap(True)
         lbl.set_markup("<span size=\"20000\"><b>" +
-                       file[0].replace(".news", "") + "</b></span>")
+                       file.replace(".news", "") + "</b></span>")
         lbl2 = Gtk.Label(xalign=0)
         lbl2.set_line_wrap(True)
         lbl2.set_markup(lines)

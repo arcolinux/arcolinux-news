@@ -9,9 +9,16 @@ working_dir = ''.join([str(Path(__file__).parents[2]),
                        "/share/arcolinux-news/"])
 
 
+def fetch_notice():
+    try:
+        items = [x for x in os.listdir(working_dir) if ".news" in x and not x.startswith("v")]
+        return items
+    except:  # noqa
+        return []
+
 def fetch_news():
     try:
-        items = [x for x in os.listdir(working_dir) if ".news" in x]
+        items = [x for x in os.listdir(working_dir) if ".news" in x and x.startswith("v")]
         return items
     except:  # noqa
         return []
