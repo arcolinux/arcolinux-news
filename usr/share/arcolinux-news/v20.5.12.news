@@ -1,3 +1,9 @@
-something special in the neighbourhood. who you gonna call <i>ArcoLinux!!!</i>
+something special in the neighbourhood. who you gonna call <b><i>ArcoLinux!!!</i></b>
 
 Donec et erat odio. Suspendisse vulputate ut libero ac placerat. Donec in tempor eros, ut venenatis sapien. Donec et magna ut mauris sodales euismod sed quis nisi. Curabitur finibus sodales massa, nec pretium odio ultrices sed. Fusce vel est vitae eros convallis aliquam sed non urna. Vestibulum convallis ultrices eleifend. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+
+<span size="12000"><u><b>nss Error!</b></u></span>
+<i>nss: /usr/lib/p11-kit-trust.so exists in filesystem
+lib32-nss: /usr/lib32/p11-kit-trust.so exists in filesystem</i>
+<span size="12000"><u><b>To fix enter following command</b></u></span>
+<span foreground="red">sudo pacman -Syu --overwrite /usr/lib\*/p11-kit-trust.so</span>
