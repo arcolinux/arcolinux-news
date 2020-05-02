@@ -1,3 +1,7 @@
+# ========================================================
+#               Author Brad Heffernan
+# ========================================================
+
 
 def takeSecond(elem):
     return elem[1]
@@ -19,7 +23,7 @@ def GUI(self, Gtk, fn):
 
     nlist = []
     for l in items:
-        nlist.append([l, fn.os.path.getmtime(fn.working_dir + l)])    
+        nlist.append([l, fn.os.path.getmtime(fn.working_dir + l)])
 
     nlist.sort(reverse=True, key=takeSecond)
 
@@ -36,7 +40,8 @@ def GUI(self, Gtk, fn):
         hbox1 = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=10)
         lbl = Gtk.Label(xalign=0)
         lbl.set_line_wrap(True)
-        lbl.set_markup("<span size=\"20000\"><b>" + file[0].replace(".news", "") + "</b></span>")
+        lbl.set_markup("<span size=\"20000\"><b>" +
+                       file[0].replace(".news", "") + "</b></span>")
         lbl2 = Gtk.Label(xalign=0)
         lbl2.set_line_wrap(True)
         lbl2.set_markup(lines)

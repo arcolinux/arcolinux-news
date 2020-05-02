@@ -1,3 +1,6 @@
+# ========================================================
+#               Author Brad Heffernan
+# ========================================================
 import os
 from pathlib import Path
 
@@ -10,5 +13,5 @@ def fetch_news():
     try:
         items = [x for x in os.listdir(working_dir) if ".news" in x]
         return items
-    except:
+    except:  # noqa
         return []
