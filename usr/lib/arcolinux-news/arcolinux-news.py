@@ -14,7 +14,6 @@ class ALN(Gtk.Window):
         GUI.GUI(self, Gtk, fn)
 
 
-
 if __name__ == '__main__':
     w = ALN()
     w.show_all()
