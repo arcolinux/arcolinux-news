@@ -11,14 +11,14 @@ working_dir = ''.join([str(Path(__file__).parents[2]),
 
 def fetch_notice():
     try:
-        items = [x for x in os.listdir(working_dir) if ".news" in x and not x.startswith("v")]
+        items = [x for x in os.listdir(working_dir) if ".news" in x and not x.startswith("2020")]
         return items
     except:  # noqa
         return []
 
 def fetch_news():
     try:
-        items = [x for x in os.listdir(working_dir) if ".news" in x and x.startswith("v")]
+        items = [x for x in os.listdir(working_dir) if ".news" in x and x.startswith("2020")]
         return items
     except:  # noqa
         return []
